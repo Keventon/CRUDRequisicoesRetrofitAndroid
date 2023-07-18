@@ -46,7 +46,7 @@ public class FotosActivity extends AppCompatActivity {
         //Configura recycleView
         binding.recycleFotos.setLayoutManager(new LinearLayoutManager(this));
         binding.recycleFotos.setHasFixedSize(true);
-        adapterFoto = new AdapterFoto(fotos, this);
+        adapterFoto = new AdapterFoto(fotosRecuperadas, this);
         binding.recycleFotos.setAdapter(adapterFoto);
 
         recuperarListaRetrofit();
@@ -62,12 +62,7 @@ public class FotosActivity extends AppCompatActivity {
             public void onResponse(Call<List<Foto>> call, Response<List<Foto>> response) {
                 if (response.isSuccessful()) {
                     binding.progressBar.setVisibility(View.GONE);
-                    fotosRecuperadas = response.body();
-
-                    for (int i = 0; i < Objects.requireNonNull(fotosRecuperadas).size(); i++) {
-                        Foto foto = fotosRecuperadas.get(i);
-                        fotos.add(foto);
-                    }
+                    fotosRecuperadas.addAll(response.body());
 
                     adapterFoto.notifyDataSetChanged();
 

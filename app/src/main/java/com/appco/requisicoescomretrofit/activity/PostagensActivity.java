@@ -50,7 +50,7 @@ public class PostagensActivity extends AppCompatActivity {
         //Configura recycleView
         binding.recyclePostagens.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclePostagens.setHasFixedSize(true);
-        adapterPostagem = new AdapterPostagem(postagens, this);
+        adapterPostagem = new AdapterPostagem(postagensRecuperadas, this);
         binding.recyclePostagens.setAdapter(adapterPostagem);
 
         recuperarListaRetrofit();
@@ -66,12 +66,8 @@ public class PostagensActivity extends AppCompatActivity {
             public void onResponse(Call<List<Postagem>> call, Response<List<Postagem>> response) {
                 if (response.isSuccessful()) {
                     binding.progressBar.setVisibility(View.GONE);
-                    postagensRecuperadas = response.body();
-
-                    for (int i = 0; i < Objects.requireNonNull(postagensRecuperadas).size(); i++) {
-                        Postagem postagem = postagensRecuperadas.get(i);
-                        postagens.add(postagem);
-                    }
+                    //postagensRecuperadas = response.body();
+                    postagensRecuperadas.addAll(response.body());
 
                     adapterPostagem.notifyDataSetChanged();
 

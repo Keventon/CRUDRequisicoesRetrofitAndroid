@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appco.requisicoescomretrofit.R;
@@ -53,6 +54,7 @@ public class AdapterFoto extends RecyclerView.Adapter<AdapterFoto.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textId, textAlbumId, textTitulo;
         ImageView image;
+        CardView cardView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +63,7 @@ public class AdapterFoto extends RecyclerView.Adapter<AdapterFoto.MyViewHolder> 
             textAlbumId = itemView.findViewById(R.id.textAlbumId);
             textTitulo = itemView.findViewById(R.id.textTitulo);
             image = itemView.findViewById(R.id.image);
+            cardView = itemView.findViewById(R.id.cardFotos);
         }
     }
 }

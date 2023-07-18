@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private DataService service;
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonSalvarPostagem.setOnClickListener(v -> salvarPostagem());
         binding.buttonAtualizarPostagem.setOnClickListener(v -> atualizarPostagem());
         binding.buttonRemoverPostagem.setOnClickListener(v -> removerPostagem());
-
     }
 
     private void removerPostagem() {
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         Postagem postagem = new Postagem();
         postagem.setBody("Corpo de uma postagem");
-        postagem.setTitle("Titulo da Postagem 1");
+        postagem.setTitle("Titulo da Postagem Teste");
         postagem.setUserId(1234);
         Call<Postagem> call = service.salvarPostagem(postagem);
 
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Postagem> call, Throwable t) {
-
+                Toast.makeText(MainActivity.this, "Erro ao salvar", Toast.LENGTH_SHORT).show();
             }
         });
     }

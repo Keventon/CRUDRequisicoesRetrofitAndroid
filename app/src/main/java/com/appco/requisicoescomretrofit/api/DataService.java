@@ -21,7 +21,8 @@ public interface DataService {
     Call<List<Foto>>recuperarFotos();
 
     @GET("/posts")
-    Call<List<Postagem>>recuperarPostagens();
+    Call<List<Postagem>> recuperarPostagens();
+
 
     //Para salvar em JSON
     @POST("/posts")
